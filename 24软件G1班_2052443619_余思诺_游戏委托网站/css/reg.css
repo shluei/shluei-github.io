@@ -1,0 +1,213 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    background: lightseagreen;
+}
+
+.header {
+    width: 100px;
+    height: 80px;
+    background: lightseagreen;
+}
+
+.container {
+    display: none;
+    top: 50px;
+    left: 70px;
+    transform: translate(100%,50%);
+    background: whitesmoke;
+    width: 500px;
+    height: 700px;
+    padding: 30px;
+   
+}
+.close-btn {
+    right: 5%;
+    top: 10px;
+    position: absolute;
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    background: none;
+    transition: 0.2s;
+}
+.close-btn:hover {
+    color: red;
+}
+h1 {
+    background: none;
+    text-align: center;
+    margin: 15px 0;
+    color: black;
+}
+
+form{
+    background: none;
+}
+label {
+    background: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    background: none;
+    display: block;
+    width: 95%;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+button {
+    display: block;
+    margin-top: 20px;
+    width: 95%;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    background: black;
+    border: none;
+    outline: none;
+    padding: 10px;
+    transition: 0.3s;
+}
+button:hover {
+    background: lightseagreen;
+}
+
+form a {
+    font-weight: bold;
+    color: lightseagreen;
+    background: none;
+    text-decoration: none;
+    transition: 0.2s;
+    font-size: 18px;
+}
+form a:hover {
+    color: rgb(13, 84, 81);
+}
+.forgot {
+    background: none;
+    text-align: center;
+    margin: 40px 5px;
+    color: black;
+    font-size: 18px;
+}
+ .user-info {
+    position: absolute;
+    top: 20px;
+     right: 20px;
+     display: none;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+     padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            margin-left: 15px;
+            color: #f44336;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .logout-btn:hover {
+            text-decoration: underline;
+        }
+        
+        .fade-transition {
+            transition: opacity 0.3s ease;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        
+       
+        
+   
+        .user-info1 {
+            display: none; 
+            position: absolute;
+            top: 18px;
+            right: 380px; 
+            align-items: center;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .user-avatar1 {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .logout-btn1 {
+            margin-left: 15px;
+            color: #f44336;
+            cursor: pointer;
+            font-size: 14px;
+        }
+			#centertext {
+				position: absolute;
+				left: 25%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			opacity: 0;
+				animation-name: in;
+				animation-duration: 1.5s;
+				animation-delay: 2s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards; 
+			}
+
+			@keyframes out {
+				100% {
+					opacity: 0;
+					display: none;
+				}
+			}@keyframes in {
+				100% {
+					opacity: 1;
+				}
+			}
+			#p3relogo{
+				position: absolute;
+				right: 12%;
+				top: 50%;
+				opacity: 0;
+				transform: translateY(-50%);
+				animation-name: in;
+				animation-duration: 1.5s;
+				animation-delay: 2s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards; 
+			}

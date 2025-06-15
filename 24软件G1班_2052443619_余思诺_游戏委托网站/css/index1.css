@@ -1,0 +1,136 @@
+@import url('https://chinese-fonts-cdn.deno.dev/packages/maple-mono-cn/dist/MapleMono-CN-Medium/result.css');
+
+body {
+    margin: 0px;
+    padding: 0;
+    font-family: 'Maple Mono CN Medium';
+    background: #685fece1;
+}
+
+.container1 {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-container1 {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.park-sec {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    transition: all .3s cubic-bezier(.68, -0.55, .27, 0.027);
+   background: rgba(255, 255, 255, 0.288);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(202, 200, 200, 0.4);
+}
+
+.park-sec.active {
+    transform: unset;
+}
+
+.park-sec1 {
+    z-index: 2;
+    transform: translateY(200%) scale(0.95);
+}
+
+.park-sec2 {
+    z-index: 1;
+    transform: translateY(100%) scale(0.9);
+}
+
+.park-sec3 {
+    z-index: 0;
+    transform: translateY(0px) scale(0.85);
+}
+
+.park-inside {
+    position: relative;
+    display: flex;
+}
+
+.park-inside img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+.content-sec {
+    position: relative;
+    margin: 3px 0 0 10px;
+}
+
+.content-sec h2 {
+    position: relative;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.content-sec span,
+.park-sec span {
+    position: relative;
+    color: #f7efef;
+    font-size: 14px;
+}
+
+.btn-grp {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    position: relative;
+    padding: 10px 40px 10px 30px;
+    background: #fffff3;
+    border-radius: 20px;
+    border: 0;
+    box-sizing: border-box;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 1px 2px #9e9d9d;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #444444;
+}
+
+.btn::after {
+    position: absolute;
+    content: "";
+    border-top: 2px solid #616160;
+    border-left: 2px solid #5e5a5a;
+    width: 7px;
+    height: 7px;
+    right: 23px;
+    top: 12px;
+    transform: rotate(225deg);
+    transition: all .3s linear;
+}
+
+.btn.active::after {
+    transform: rotate(45deg);
+    top: 17px;
+}

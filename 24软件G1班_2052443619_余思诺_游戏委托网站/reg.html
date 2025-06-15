@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/style.css">
+     <script src="js\jquery-3.7.1.min.js"></script>
+    <script src="js\config.js"></script>
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>  
+
+    <div class="auth-container">
+        <div class="card">
+            <h2 class="page-title">S.E.E.S入队申请</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username" class="form-label">用户名</label>
+                    <input type="text" id="username" class="form-control" placeholder="请输入用户名（3-20个字符）" required>
+                    <div id="usernameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="nickname" class="form-label">昵称</label>
+                    <input type="text" id="nickname" class="form-control" placeholder="请输入昵称（2-10个字符）" required>
+                    <div id="nicknameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">密码</label>
+                    <input type="password" id="password" class="form-control" placeholder="请输入密码（至少6位）" required>
+                    <div id="passwordError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">确认密码</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="请再次输入密码" required>
+                    <div id="confirmPasswordError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn" style="width: 100%;">注册</button>
+                </div>
+            </form>
+            <div id="registerError" class="error-message" style="text-align: center;"></div>
+        </div>
+        <div class="auth-footer">
+            已有账号？<a href="login.html">立即登录</a>
+        </div>
+    </div>
+        
+       
+    </div>
+    <div id="centertext">
+				<h1>Memento Mori</h1>
+				<p>Remember, You Will Die.<br />Time never waits.<br />It delivers all equally to the same end.</p>
+			</div>
+            <img id="p3relogo" src="img/P3RE.svg" alt="" />
+        </div>
+    
+   
+    <script>
+        $(document).ready(function(){
+            $("body").css("opacity", "1");
+            $("#registerForm").on("submit", function(event){
+                event.preventDefault();
+                
+                $(".error-message").text("");
+                let username = $("#username").val().trim();
+                let nickname = $("#nickname").val().trim();
+                let password = $("#password").val().trim();
+                let confirmPassword = $("#confirmPassword").val().trim();
+                
+                if(username.length < 3 || username.length > 20){
+                    $("#usernameError").text("用户名长度介于3-20之间");
+                    return;
+                }
+                
+                if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nickname)){
+                    $("#nicknameError").text("邮箱格式不正确");
+                    return;
+                }
+                
+                if(password.length < 6 || password.length > 20){
+                    $("#passwordError").text("密码长度介于6-20之间");
+                    return;
+                }
+                
+                if(confirmPassword !== password){   
+                    $("#confirmPasswordError").text("两次输入的密码不一致");
+                    return;
+                }
+                $.ajax({
+                    url: BASE_URL + "/register",//注意好URL，不要随意在JS中随意添加后缀！！！
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        username: username,
+                       nickname: nickname,//由于用的是注册校园墙URL,所以email的type改成了nickname,但还是显示email邮箱，且老师限制了nickname字符长度，只能2-10 遗憾腰斩.
+                        password: password,
+                        confirmPassword: confirmPassword
+                    })
+                })
+                   .done(function(response){
+                    if(!response.error){
+                        alert("注册成功")
+                        window.location.href='login.html'
+                    }else{
+                        $("#registerError").text(response.message)
+
+                    }
+                })
+                .fail(function(xhr){
+                    $("#registerForm").text(xhr.responseJSON.message);
+                });
+            })
+        })
+            $("#loginLink").click(function(e) {
+                e.preventDefault();
+                $("body").css("opacity", "0");
+                setTimeout(function() {
+                    window.location.href = "login.html";
+                }, 300);
+                
+            });
+    </script>
+</body>
+</html>

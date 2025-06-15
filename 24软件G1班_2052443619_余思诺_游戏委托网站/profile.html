@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Personal 3 RE</title>
+    <link rel="stylesheet" href="css/profile.css">
+     <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/profile.js"></script>
+</head>
+<body>
+  <div class="user-info" id="userInfo">
+ <div class="user-avatar" id="userAvatar"></div>
+<span id="usernameDisplay"></span>
+    </div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">S.E.E.S团队</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html">S.E.E.S</a></li>
+                <li><a href="personal.html">S.E.E.S成员</a></li>
+                 <li><a href="profile.html">个人中心</a></li>
+                <li><a href="login.html" id="logoutBtn">退出登录</a></li>
+            </ul>
+        </div>
+    </nav>
+
+ <div class="container">
+        <div class="card" id="profileCard">
+            <div class="profile-header">
+                <div class="profile-avatar" id="userAvatar">理</div>
+                <div class="profile-info">
+                    <h2 id="userNickname">结成理</h2>
+                    <p>UID: <span id="username">jiechengli   </span></p>
+                    <p>队伍: <span id="registerTime">S.E.E.S</span></p>
+                </div>
+            </div>
+            
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="messageCount">1</div>
+                    <div class="stat-label">留言</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="likeCount">660</div>
+                    <div class="stat-label">获赞</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn" id="editProfileBtn">
+                    <i class="fas fa-edit"></i> 修改个人信息 </button>
+            </div>
+        </div>
+        <div class="card" id="editProfileForm">
+            <h3><i class="fas fa-user-edit"></i> 修改个人信息</h3>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="editNickname" class="form-label">昵称</label>
+                    <input type="text" id="editNickname" class="form-control" placeholder="请输入昵称（2-10个字符）" required>
+                    <div id="nicknameError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="oldPassword" class="form-label">原密码</label>
+                    <div class="password-container">
+                        <input type="password" id="oldPassword" class="form-control" placeholder="请输入原密码">
+                        <i class="fas fa-eye toggle-password" id="toggleOldPassword"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword" class="form-label">新密码</label>
+                    <div class="password-container">
+                        <input type="password" id="newPassword" class="form-control" placeholder="请输入新密码（至少6位）">
+                        <i class="fas fa-eye toggle-password" id="toggleNewPassword"></i>
+                    </div>
+                    <div id="passwordError" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">确认新密码</label>
+                    <div class="password-container">
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="请再次输入新密码">
+                        <i class="fas fa-eye toggle-password" id="toggleConfirmPassword"></i>
+                    </div>
+                    <div id="confirmPasswordError" class="error-message"></div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">
+                        <i class="fas fa-times"></i> 取消</button>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-save"></i> 保存修改</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="notification" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <span>个人资料更新成功！</span>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

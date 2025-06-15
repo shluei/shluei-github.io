@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+    <link rel="stylesheet" href="css\login.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+   
+</head>
+<body>
+    <div class="header">
+        <button class="display-btn">登入</button>
+        <br>
+         <h1 style="color: rgb(255, 255, 255);">P3:RE</h1>
+               <div class="container">
+            <label for="display" class="close-btn" title="close">&times;</label>
+            <h1>S.E.E.S登入成员</h1>
+            <br>
+            <br>
+            
+            <form action="#">   
+                <label>账号/电子邮件</label>
+                <br>
+                <input type="text" id="username" placeholder="请输入账号/邮箱" required>
+                <div id="usernameError" class="error-message"></div>
+                     <br>
+                     
+    
+                     <br>
+                <label>密码</label>
+                     <br>
+              
+                     
+                <input type="password" id="password" placeholder="请输入密码（至少8位）" required>
+                <div id="passwordError" class="error-message"></div>
+                     <br>
+                <a href="#">         忘记密码</a>
+                     <br>
+                          <br>
+                <button type="submit"><a href="index.html">登入</a></button>
+                <div class="forgot">没有账号?<a href="reg.html">注册</a></div>
+            </form>
+        </div>
+    </div>  
+    <div id="centertext">
+				<h1>Memento Mori</h1>
+				<p>Remember, You Will Die.<br />Time never waits.<br />It delivers all equally to the same end.</p>
+			</div>
+            <img id="p3relogo" src="img/P3RE.svg" alt="" />
+        </div>
+
+    <script>
+        $(document).ready(function() {
+            checkLoginStatus();
+    $(".display-btn").click(function() {
+                $(".container").fadeIn(300);
+            });
+
+          
+            $(".close-btn").click(function() {
+                $(".container").fadeOut(300);
+            });
+            $("#loginForm").submit(function(e) {
+                e.preventDefault();
+                $(".error-message").hide();
+                
+                let username = $("#username").val().trim();
+                let password = $("#password").val().trim();
+                
+ 
+                if(username === "") {
+                    $("#usernameError").text("请输入账号").show();
+                    return;
+                }
+                
+                if(password === "") {
+                    $("#passwordError").text("请输入密码").show();
+                    return;
+                }
+        
+                $.ajax({
+                    url: BASE_URL + "/login",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        username: username,
+                        password: password
+                    }),
+                    success: function(response) {
+                        if(response.success) {
+                           
+                            handleLoginSuccess(username, response.data);
+                        } else {
+                          
+                            $("#loginError").text(response.message || "登录失败").show();
+                        }
+                    },
+                    error: function(xhr) {
+                        var errorMsg = "登录请求失败";
+                        if(xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMsg = xhr.responseJSON.message;
+                        }
+                        $("#loginError").text(errorMsg).show();
+                    },
+                    complete: function() {
+                       
+                        $("#loginForm button").prop("disabled", false).text("登入");
+                    }
+                    
+                });
+            });
+            
+            
+            $("#logoutBtn").click(logout);
+        });
+        function handleLoginSuccess(username, userData) {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', username);
+            if(userData) {
+                localStorage.setItem('userData', JSON.stringify(userData));
+            }
+            updateUserInfo(username);
+            $(".container").fadeOut(300);
+            
+        }
+        function checkLoginStatus() {
+            var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if(isLoggedIn) {
+                var username = localStorage.getItem('username');
+                updateUserInfo(username);
+            }
+        }
+        
+        
+      
+        
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            localStorage.removeItem('userData');
+            $("#userInfo").hide();
+            $(".display-btn").show();
+            $("#loginForm")[0].reset();
+            $(".error-message").hide();
+        }
+    </script>
+    
+</body>
+</html>

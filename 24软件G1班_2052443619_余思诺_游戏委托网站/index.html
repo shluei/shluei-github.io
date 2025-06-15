@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal 3 RE</title>
+    <link rel="stylesheet" href="css/index.css">
+    
+    
+</head>
+<body>
+    <div class="user-info" id="userInfo">
+        <div class="user-avatar" id="userAvatar">Li</div>
+        <span id="usernameDisplay">结成理</span>
+        <span class="logout-btn1" id="logoutBtn"><a href="login.html">退出</a></span>
+    </div>
+    
+    
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">S.E.E.S团队</a>
+            <ul class="navbar-menu">
+                <li><a href="index.html">S.E.E.S</a></li>
+                <li><a href="personal.html">S.E.E.S成员</a></li>
+                 <li><a href="profile.html">个人中心</a></li>
+                <li><a href="login.html" id="logoutBtn">退出登录</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h1 class="page-title">S.E.E.S公告栏</h1>
+        
+        <div class="inner-container">
+            <div class="park-sec park-sec1">
+                <div class="park-inside">
+                    <img src="img/li1.jpg" alt="结成理">
+                    <div class="content-sec">
+                        <h2>结成理</h2>
+                        <span>所有旅程都始于迈出第一步，即使无人知晓前路如何，也勇往直前吧！</span>
+                        <div class="message-actions">
+                            <a href="#" class="like-btn" data-id="1">点赞</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-footer">
+                    <div class="message-likes">
+                        <i>♥</i> <span>660</span> 人点赞
+                    </div>
+                </div>
+                <span class="date">S.E.E.S</span>
+            </div>
+            
+            <div class="park-sec park-sec2">
+                <div class="park-inside">
+                    <img src="img/you2.jpg" alt="由咖喱">
+                    <div class="content-sec">
+                        <h2>由咖喱</h2>
+                        <span>如果能做到人死能复生的话，我会拼尽一切去见他</span>
+                        <div class="message-actions">
+                            <a href="#" class="like-btn" data-id="2">点赞</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-footer">
+                    <div class="message-likes">
+                        <i>♥</i> <span>99</span> 人点赞
+                    </div>
+                </div>
+                <span class="date">S.E.E.S</span>
+            </div>
+            
+            <div class="park-sec park-sec3">
+                <div class="park-inside">
+                    <img src="img/zhangshunping.png" alt="张顺平">
+                    <div class="content-sec">
+                        <h2>张顺平</h2>
+                        <span>我就是一个普通人，换句话来说，让我们陷入影世界之中这件事四舍五入都是你的错吧？！</span>
+                        <div class="message-actions">
+                            <a href="#" class="like-btn" data-id="3">点赞</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-footer">
+                    <div class="message-likes">
+                        <i>♥</i> <span>-251</span> 人点赞
+                    </div>
+                </div>
+                <span class="date">S.E.E.S</span>
+            </div>
+            
+            <div class="park-sec park-sec4">
+                <div class="park-inside">
+                    <img src="img/zhen4.jpg" alt="真田">
+                    <div class="content-sec">
+                        <h2>真田</h2>
+                        <span>影时间，请大家联合起来！</span>
+                        <div class="message-actions">
+                            <a href="#" class="like-btn" data-id="4">点赞</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-footer">
+                    <div class="message-likes">
+                        <i>♥</i> <span>99</span> 人点赞
+                    </div>
+                </div>
+                <span class="date">S.E.E.S</span>
+            </div>
+        </div>
+        
+        <div class="btn-grp">
+            <button class="btn">展开</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1 class="page-title">发布新委托</h1>
+        
+        <div class="card">
+            <form id="postForm">
+                <div class="form-group">
+                    <label for="messageContent" class="form-label">委托内容</label>
+                    <textarea id="messageContent" class="form-control" rows="6" placeholder="有什么紧急情况需要分布..." required></textarea>
+                    <div id="contentError" class="error-message"></div>
+                    <div style="text-align: right; margin-top: 5px; color: #9e9e9e;">
+                        <span id="charCount">0</span>/200
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="messageTag" class="form-label">标签（选填）</label>
+                    <input type="text" id="messageTag" class="form-control" placeholder="添加标签，用逗号分隔">
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <button type="submit" class="btn" style="width: 200px;">发布委托</button>
+                </div>
+            </form>
+        </div>
+    </div>  
+    
+    <script>
+        const btn = document.querySelector(".btn");
+        const park_sec = document.querySelectorAll(".park-sec");
+        var sendFalg = 0;
+
+        btn.addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            if (sendFalg === 0) {
+                sendFalg = 1;
+                this.textContent = "收起";
+                park_sec.forEach(function (item) {
+                    item.classList.add("active");
+                });
+            }
+            else {
+                sendFalg = 0;
+                this.textContent = "展开";
+                park_sec.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+            }
+        });
+        
+        function setupLikeButtons() {
+            const likeBtns = document.querySelectorAll('.like-btn');
+            likeBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const messageId = btn.getAttribute('data-id');
+                    const messageElement = btn.closest('.park-sec');
+                    const likesElement = messageElement.querySelector('.message-likes span');
+                    
+                    let likes = parseInt(likesElement.textContent);
+                    
+                    if (!btn.classList.contains('liked')) {
+                        likes++;
+                        btn.classList.add('liked');
+                        btn.textContent = '取消点赞';
+                    } else {
+                        likes--;
+                        btn.classList.remove('liked');
+                        btn.textContent = '点赞';
+                    }
+                    
+                    likesElement.textContent = likes;
+                    setTimeout(() => {
+                        heart.style.transform = 'translateY(-40px)';
+                        heart.style.opacity = '0';
+                    }, 10);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(heart);
+                    }, 1000);
+                });
+            });
+        }
+        setupLikeButtons();
+        const messageContent = document.getElementById('messageContent');
+        const charCount = document.getElementById('charCount');
+        
+        messageContent.addEventListener('input', () => {
+            const length = messageContent.value.length;
+            charCount.textContent = length;
+            
+            if (length > 200) {
+                document.getElementById('contentError').textContent = '内容不能超过200个字符';
+                document.getElementById('contentError').style.display = 'block';
+            } else {
+                document.getElementById('contentError').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('postForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const content = messageContent.value;
+            
+            if (content.length > 200) {
+                document.getElementById('contentError').textContent = '内容不能超过200个字符';
+                document.getElementById('contentError').style.display = 'block';
+                return;
+            }
+            
+            alert('留言发布成功！');
+        });
+        
+        window.addEventListener('load', function() {
+            parkSec.forEach(function(item) {
+                item.classList.add('active');
+            });
+            expandBtn.textContent = "收起";
+            isExpanded = true;
+        });
+        
+        
+    </script>
+</body>
+</html>
